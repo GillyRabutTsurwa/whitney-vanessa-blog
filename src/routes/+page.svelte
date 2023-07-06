@@ -11,7 +11,6 @@
     <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<Navigation />
 <Header />
 <div class="body-tings">
     <Main />
@@ -31,7 +30,7 @@
     .body-tings {
         display: grid;
         grid-template-columns: 70% 1fr;
-        background: linear-gradient(
+        background-image: linear-gradient(
             to right,
             var(--left-background-colour) 0%,
             var(--left-background-colour) 70%,
@@ -40,7 +39,15 @@
         );
 
         @include abstracts.breakpoint(1023) {
+            display: flex;
             flex-direction: column;
+            background-image: linear-gradient(
+                to bottom,
+                var(--right-background-colour) 0%,
+                var(--right-background-colour) 70%,
+                var(--right-background-colour) 70%,
+                var(--right-background-colour) 100%
+            );
         }
     }
 </style>

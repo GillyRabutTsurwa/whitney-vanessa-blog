@@ -4,6 +4,7 @@
     import { useFetchPosts } from "../helpers/useFetchPosts";
     import { useFormatDate } from "@/lib/helpers/useFormatDate";
     import { useSanityImage } from "@/lib/helpers/useSanityImage";
+    import { text } from "@sveltejs/kit";
 
     const { fetchPosts } = useFetchPosts();
     const { formatDate } = useFormatDate();
@@ -11,6 +12,7 @@
 
     const postsPromesse = fetchPosts();
     const textColour = {};
+    let dynamicColour;
 
     onMount(() => {
         const body = document.querySelector(".body-tings") as HTMLDivElement;
@@ -34,6 +36,10 @@
                 colourTwo: leftBrightness < rightBrightness ? "rgb(23, 23, 23)" : "rgb(222, 222, 222)",
             };
         }
+
+        const mediaQueryList = window.matchMedia("(max-width: 767px)");
+        console.log(mediaQueryList.matches);
+        dynamicColour = mediaQueryList.matches ? textColour.secondaryColour : textColour.primaryColour;
     });
 
     export let posts: object[];
@@ -49,7 +55,7 @@
 </script>
 
 <template>
-    <h2 style:color={textColour.primaryColour} style="text-align: center; font-size: 6rem; margin: 3.5rem 0;">Posts</h2>
+    <h2 style:color={dynamicColour} style="text-align: center; font-size: 6rem; margin: 3.5rem 0;">Posts</h2>
     {#await postsPromesse}
         Fetching Posts
     {:then posts}
@@ -60,9 +66,9 @@
                         <img src={urlFor(currentPost.mainImage)} alt="" />
                     </div>
 
-                    <h3 class="picture-category__caption--title" style:color={textColour.primaryColour}>{currentPost.title}</h3>
-                    <h5 style="font-weight: 500;" style:color={textColour.primaryColour}>{formatDate(currentPost.publishedAt)}</h5>
-                    <div class="picture-category__caption--paragraph" style:color={textColour.primaryColour}>
+                    <h3 class="picture-category__caption--title" style:color={dynamicColour}>{currentPost.title}</h3>
+                    <h5 style="font-weight: 500;" style:color={dynamicColour}>{formatDate(currentPost.publishedAt)}</h5>
+                    <div class="picture-category__caption--paragraph" style:color={dynamicColour}>
                         <p>{getSnippet(currentPost.body)}</p>
                     </div>
                     <Button isLink path={`/posts/${currentPost.slug.current}`} colourPrimary="#dedede" colourSecondary="#171717" />

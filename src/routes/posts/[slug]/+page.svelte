@@ -47,6 +47,7 @@
         grid-template-columns: repeat(2, 1fr);
         column-gap: 2rem;
         height: 100vh;
+        background-color: #f0f0f0;
 
         @include abstracts.breakpoint(1023) {
             grid-template-columns: 1fr;

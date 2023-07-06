@@ -1,5 +1,6 @@
 <script>
     import "@/lib/assets/sass/main.scss";
+    import Navigation from "@/lib/components/Navigation.svelte";
     // import { onMount } from "svelte";
 
     // let textColor;
@@ -19,6 +20,7 @@
     // });
 </script>
 
+<Navigation />
 <div class="app">
     <slot />
 </div>
