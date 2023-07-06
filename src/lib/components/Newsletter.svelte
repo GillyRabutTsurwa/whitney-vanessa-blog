@@ -26,6 +26,7 @@
         p {
             text-align: center;
             padding: 1rem 3rem;
+            margin-bottom: 3rem;
         }
 
         form {
@@ -35,7 +36,7 @@
             input,
             textarea {
                 font-family: inherit;
-                font-size: 1.9rem;
+                font-size: 1.6rem;
                 color: #13113a;
                 padding: 1.5rem;
                 margin-bottom: 2rem;

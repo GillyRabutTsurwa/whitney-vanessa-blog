@@ -1,5 +1,5 @@
 import { error } from "@sveltejs/kit";
-import { client } from "../../../lib/store/posts"; //NOTE: Change this
+import { client } from "@/sanity.client"; //NOTE: Change this
 import groq from "groq";
 
 /** @type {import('./$types').PageLoad} */

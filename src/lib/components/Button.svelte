@@ -1,9 +1,9 @@
-<script>
-    export let text = "Read Post";
-    export let isLink = false;
-    export let path;
-    export let colourPrimary;
-    export let colourSecondary;
+<script lang="ts">
+    export let text: string = "Read Post";
+    export let isLink: boolean = false;
+    export let path: string | null = null; //NOTE: solution alternative pour faire non-requiert un prop
+    export let colourPrimary: string;
+    export let colourSecondary: string;
 
     let isHovered = false;
 

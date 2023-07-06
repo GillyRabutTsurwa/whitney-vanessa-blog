@@ -1,16 +1,5 @@
-import { createClient, SanityClient, type ClientConfig } from "@sanity/client";
-import { writable, get } from "svelte/store";
-import groq from "groq";
+import { writable, type Writable } from "svelte/store";
 
-const config: ClientConfig = {
-    dataset: "production",
-    projectId: "g014cs9v",
-    useCdn: false,
-    apiVersion: "2021-10-21",
-};
-
-export const client: SanityClient = createClient(config);
-
-export const posts = writable([]);
-export const filteredPosts = writable([]);
-export const featuredPost = writable({});
+export const posts: Writable<object[]> = writable([]);
+export const filteredPosts: Writable<object[]> = writable([]);
+export const featuredPost: Writable<object> = writable({});

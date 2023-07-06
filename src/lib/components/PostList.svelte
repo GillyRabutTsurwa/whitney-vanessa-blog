@@ -164,6 +164,9 @@
 
             &--paragraph {
                 margin-bottom: 0;
+                font-weight: 300;
+                line-height: 1.5;
+                font-size: 1.7rem;
             }
         }
 

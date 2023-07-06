@@ -1,5 +1,7 @@
+// NOTE: in the src folder, this file is properly loaded
+// hors du fichier, ca marche pas
 import imageUrlBuilder from "@sanity/image-url";
-import { client } from "$lib/store/posts.js"; //NOTE: change this
+import { client } from "@/sanity.client";
 import type { ImageUrlBuilder } from "@sanity/image-url/lib/types/builder";
 
 export const useSanityImage = () => {
