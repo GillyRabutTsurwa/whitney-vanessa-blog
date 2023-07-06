@@ -1,0 +1,17 @@
+@use "../abstracts" as abstracts;
+.blogs {
+    margin: 3rem 0;
+    padding: 5rem;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(12, 5vw);
+    -moz-gap: 7rem;
+    gap: 2rem;
+
+    @include abstracts.breakpoint(1023) {
+        grid-template-columns: 1fr;
+        width: 80%;
+        margin: 0 auto;
+    }
+}

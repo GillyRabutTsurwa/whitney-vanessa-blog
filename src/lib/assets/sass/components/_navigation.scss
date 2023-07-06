@@ -1,0 +1,78 @@
+@use "../abstracts" as abstracts;
+
+.navigation {
+    @extend %flex-basic;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    background-color: #f0f0f0;
+    padding: 0 1.75rem;
+    // background-color: abstracts.$colour-primary;
+    background-color: rgb(23, 23, 23);
+
+    @include abstracts.breakpoint(480) {
+        height: 17.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        & > *:not(:first-child) {
+            margin-top: 1.25rem;
+        }
+    }
+
+    .logo {
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: abstracts.$text-grey-light;
+        // font-family: abstracts.$Josefin;
+        letter-spacing: 1.5px;
+    }
+
+    &__list,
+    &__icons {
+        list-style: none;
+        @extend %flex-basic;
+    }
+
+    &__list {
+        font-family: "Abel", cursive;
+        font-size: 1.6rem;
+
+        &--item {
+            margin-right: 3.25rem;
+
+            a {
+                &,
+                &:link,
+                &:visited {
+                    font-size: 1.75rem;
+                    text-decoration: none;
+                    color: abstracts.$whitish;
+                }
+
+                &:hover,
+                &:active {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    &__icons {
+        font-size: 1.6rem;
+
+        &--icon {
+            margin-right: 2rem;
+
+            a {
+                &:link,
+                &:visited {
+                    text-decoration: none;
+                    color: abstracts.$whitish;
+                }
+            }
+        }
+    }
+}

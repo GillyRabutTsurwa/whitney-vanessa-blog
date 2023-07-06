@@ -1,0 +1,28 @@
+@use "../abstracts" as abstracts;
+html {
+    font-size: 62.5%; // 1rem = 10px(desired px definition); 10px/16px = 62.5%;
+
+    @include abstracts.breakpoint(1023) {
+        font-size: 56.25%; // 1rem = 9px; 9px/16px = 56.25%;
+    }
+
+    @include abstracts.breakpoint(767) {
+        font-size: 50%; // 1rem = 8px; 9px/16px = 56.25%;
+    }
+
+    @include abstracts.breakpoint(480) {
+        font-size: 45%;
+    }
+}
+
+body {
+    position: relative;
+    font-size: 1.6rem;
+    // TESTING
+    font-family: abstracts.$Lexend;
+    // color: abstracts.$kibichi;
+}
+
+.main {
+    padding: 0 10rem;
+}

@@ -1,0 +1,36 @@
+@mixin flex-centre-vertical() {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+}
+
+@mixin button-config($padding-x, $padding-y, $border-radius) {
+    padding: $padding-x $padding-y;
+    border-radius: $border-radius;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+// NOTE: used this in my ssmt project. using it for the first time in a personal project. love this solution for mixins in sass
+// here is where i found it: http://sassbreak.com/flexible-media-query-mixins/
+
+@mixin breakpoint($breakpointUnit, $min-max: max-width) {
+    $baseFont: 16;
+    //NOTE: min-width would also work in this case NOTE: min-max is a default parametre
+    $em: calc($breakpointUnit / $baseFont);
+    // NOTE: so if i was aiming for a breakpoint of 900px, it would take 900/16 and that would be the em unit used in the media query
+    @media only screen and (#{$min-max}: #{$em}em) {
+        @content;
+    }
+}

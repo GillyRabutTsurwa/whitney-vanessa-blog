@@ -1,0 +1,31 @@
+@use "../abstracts" as abstracts;
+
+.button-primary {
+    // cursor: pointer;
+    // border: none;
+    // outline: none;
+    // padding: 1.5rem 3.5rem;
+    // border-radius: 3rem;
+    // font-size: 1.5rem;
+    @include abstracts.button-config(1.5rem, 3.5rem, 3rem);
+    font-size: 1.5rem;
+
+    background-color: abstracts.$colour-primary;
+    color: abstracts.$whitish;
+    transition: transform 0.5s ease;
+
+    &:active {
+        transform: translateY(0.5rem);
+    }
+}
+
+.button-secondary {
+    @include abstracts.button-config(1rem, 2.2rem, 0.5rem);
+    background-color: rgb(222, 222, 222);
+    color: rgb(23, 23, 23);
+    text-decoration: none;
+
+    span {
+        padding-right: 0.15rem;
+    }
+}
