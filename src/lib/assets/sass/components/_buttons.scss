@@ -21,9 +21,19 @@
 
 .button-secondary {
     @include abstracts.button-config(1rem, 2.2rem, 0.5rem);
+<<<<<<< HEAD
     background-color: rgb(222, 222, 222);
     color: rgb(23, 23, 23);
     text-decoration: none;
+=======
+    background-color: abstracts.$colour-primary;
+    color: abstracts.$whitish;
+    // padding: 1rem 2.2rem;
+    // border-radius: 0.5rem;
+    // border: none;
+    // outline: none;
+    // cursor: pointer;
+>>>>>>> 9388c6c (Added Sass Code)
 
     span {
         padding-right: 0.15rem;

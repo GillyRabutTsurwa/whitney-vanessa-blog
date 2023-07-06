@@ -8,8 +8,12 @@
     height: 10vh;
     background-color: #f0f0f0;
     padding: 0 1.75rem;
+<<<<<<< HEAD
     // background-color: abstracts.$colour-primary;
     background-color: rgb(23, 23, 23);
+=======
+    background-color: abstracts.$colour-primary;
+>>>>>>> 9388c6c (Added Sass Code)
 
     @include abstracts.breakpoint(480) {
         height: 17.5rem;
