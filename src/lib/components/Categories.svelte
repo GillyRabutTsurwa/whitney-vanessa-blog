@@ -1,16 +1,29 @@
-<script>
-    import { posts, filterPosts } from "../store/posts";
+<script lang="ts">
+    import { posts } from "../store/posts";
+    import { useFetchPosts } from "../helpers/useFetchPosts";
+    import { onDestroy } from "svelte";
 
-    $: categories = $posts.map((currentPost) => currentPost.categories);
+    const { fetchPosts, filterPosts } = useFetchPosts();
+    let postsArr: any[] = [];
+
+    const unsubscribe = posts.subscribe(async (storeValue) => {
+        storeValue = await fetchPosts();
+        postsArr = storeValue;
+        console.log(postsArr);
+    });
+
+    $: categories = postsArr.map((currentPost) => currentPost.categories);
     $: categoriesList = [...new Set(categories.flat())];
 
     function getNumOfPostsByCategory(category) {
-        return $posts.filter((currentPost) => currentPost.categories.includes(category)).length;
+        return postsArr.filter((currentPost) => currentPost.categories.includes(category)).length;
     }
 
     async function testFilter(category) {
-        await filterPosts(category);
+        await filterPosts(category); //NOTE: doesn't work for now
     }
+
+    onDestroy(unsubscribe); //NOTE: store data cleanup
 </script>
 
 <div class="category">

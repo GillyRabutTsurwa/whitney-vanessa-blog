@@ -1,23 +1,37 @@
-<script>
+<script lang="ts">
     import Button from "./Button.svelte";
+    import { useFetchPosts } from "../helpers/useFetchPosts";
+    import { useSanityImage } from "../helpers/useSanityImage";
+
+    const { fetchRandomPost } = useFetchPosts();
+    const { urlFor } = useSanityImage();
+    const postPromesse = fetchRandomPost();
+    console.log(postPromesse);
+
+    let snippetLength = 300;
+    // move this. je l'utilise d'ailleurs
+    function getSnippet(blockContent) {
+        const body = blockContent
+            .filter((block) => block._type === "block")
+            .map((block) => block.children.map((child) => child.text).join(""))
+            .join("");
+        return body.slice(0, snippetLength) + "...";
+    }
 </script>
 
-<h2>Featured Post</h2>
-<section>
-    <figure>
-        <img src="https://source.unsplash.com/random/?city,night" alt="" />
-    </figure>
-    <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum quaerat, odit, perspiciatis sequi ipsa at, earum repellat tenetur architecto
-        qui consequatur. Officia temporibus odio aliquam officiis ducimus adipisci itaque esse exercitationem tenetur assumenda vel aliquid veritatis
-        accusamus earum vitae eveniet alias, quia, neque possimus provident ea iusto corrupti dicta. Non quas architecto doloremque earum tempora vel
-        et eaque perspiciatis debitis doloribus repudiandae harum amet inventore, reiciendis veniam voluptatibus beatae! Magnam necessitatibus
-        cupiditate totam, culpa recusandae soluta aut aliquam eveniet enim quam exercitationem voluptas at magni cum dolores tempore hic numquam!
-        Eligendi illum distinctio odio repellat voluptate blanditiis ullam reprehenderit fugit!
-    </p>
-    <!-- <Button isLink path={`/posts/${currentPost.slug.current}`} colourPrimary="#dedede" colourSecondary="#171717" /> -->
-    <Button isLink path={`/`} colourPrimary="#171717" colourSecondary="#dedede" />
-</section>
+<h2 style="text-align: center;">Featured Post</h2>
+{#await postPromesse}
+    <h5>Fetching Featured Post</h5>
+{:then post}
+    <section>
+        <figure>
+            <img src={urlFor(post.mainImage)} alt="" />
+        </figure>
+        <h3>{post.title}</h3>
+        <p>{getSnippet(post.body)}</p>
+        <Button isLink path={`/posts/${post.slug.current}`} colourPrimary="#171717" colourSecondary="#dedede" />
+    </section>
+{/await}
 
 <style lang="scss">
     section {

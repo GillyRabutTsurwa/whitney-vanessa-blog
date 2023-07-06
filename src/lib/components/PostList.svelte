@@ -1,12 +1,15 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import Button from "./Button.svelte";
+    import { onMount } from "svelte";
+    import { useFetchPosts } from "../helpers/useFetchPosts";
     import { useFormatDate } from "@/lib/helpers/useFormatDate";
     import { useSanityImage } from "@/lib/helpers/useSanityImage";
 
+    const { fetchPosts } = useFetchPosts();
     const { formatDate } = useFormatDate();
     const { urlFor } = useSanityImage();
 
+    const postsPromesse = fetchPosts();
     const textColour = {};
 
     onMount(() => {
@@ -47,23 +50,26 @@
 
 <template>
     <h2 style:color={textColour.primaryColour} style="text-align: center; font-size: 6rem; margin: 3.5rem 0;">Posts</h2>
-    <section class="picture-category">
-        {#each posts as currentPost, index}
-            <div class="picture-category__caption blog">
-                <div class="picture-category__picture">
-                    <img src={urlFor(currentPost.mainImage)} alt="" />
-                </div>
+    {#await postsPromesse}
+        Fetching Posts
+    {:then posts}
+        <section class="picture-category">
+            {#each posts as currentPost, index}
+                <div class="picture-category__caption blog">
+                    <div class="picture-category__picture">
+                        <img src={urlFor(currentPost.mainImage)} alt="" />
+                    </div>
 
-                <h3 class="picture-category__caption--title" style:color={textColour.primaryColour}>{currentPost.title}</h3>
-                <h5 style="font-weight: 500;" style:color={textColour.primaryColour}>{formatDate(currentPost.publishedAt)}</h5>
-                <div class="picture-category__caption--paragraph" style:color={textColour.primaryColour}>
-                    <p>{getSnippet(currentPost.body)}</p>
+                    <h3 class="picture-category__caption--title" style:color={textColour.primaryColour}>{currentPost.title}</h3>
+                    <h5 style="font-weight: 500;" style:color={textColour.primaryColour}>{formatDate(currentPost.publishedAt)}</h5>
+                    <div class="picture-category__caption--paragraph" style:color={textColour.primaryColour}>
+                        <p>{getSnippet(currentPost.body)}</p>
+                    </div>
+                    <Button isLink path={`/posts/${currentPost.slug.current}`} colourPrimary="#dedede" colourSecondary="#171717" />
                 </div>
-                <Button isLink path={`/posts/${currentPost.slug.current}`} colourPrimary="#dedede" colourSecondary="#171717" />
-            </div>
-        {/each}
-    </section>
-    <h4 style:color={textColour.secondaryColour}>Colour Test</h4>
+            {/each}
+        </section>
+    {/await}
 </template>
 
 <style lang="scss">
