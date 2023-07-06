@@ -25,7 +25,7 @@
         // --left-background-colour: rgb(170, 0, 0);
         // --right-background-colour: rgb(218, 165, 32);
         --left-background-colour: rgb(23, 23, 23);
-        --right-background-colour: rgb(222, 222, 222);
+        --right-background-colour: rgb(240, 240, 240);
     }
 
     .body-tings {

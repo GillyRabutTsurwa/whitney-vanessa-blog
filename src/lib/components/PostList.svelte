@@ -46,7 +46,7 @@
 </script>
 
 <template>
-    <h2 style:color={textColour.primaryColour} style="text-align: center; font-size: 6rem;">Posts</h2>
+    <h2 style:color={textColour.primaryColour} style="text-align: center; font-size: 6rem; margin: 3.5rem 0;">Posts</h2>
     <section class="picture-category">
         {#each posts as currentPost, index}
             <div class="picture-category__caption blog">
