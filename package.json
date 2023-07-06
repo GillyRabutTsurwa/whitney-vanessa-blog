@@ -26,7 +26,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-<<<<<<< HEAD
 		"@portabletext/svelte": "^2.0.0",
 		"@sanity/client": "^6.1.6",
 		"@sanity/image-url": "^1.0.2",
@@ -34,9 +33,5 @@
 		"groq": "^3.14.1",
 		"sass": "^1.63.6",
 		"svelte-preprocess": "^5.0.4"
-=======
-		"sass": "^1.62.1",
-		"svelte-preprocess": "^5.0.3"
->>>>>>> 343699b (Setup Sass)
 	}
 }
