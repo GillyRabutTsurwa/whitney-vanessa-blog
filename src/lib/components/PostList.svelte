@@ -4,7 +4,6 @@
     import { useFetchPosts } from "../helpers/useFetchPosts";
     import { useFormatDate } from "@/lib/helpers/useFormatDate";
     import { useSanityImage } from "@/lib/helpers/useSanityImage";
-    import { text } from "@sveltejs/kit";
 
     const { fetchPosts } = useFetchPosts();
     const { formatDate } = useFormatDate();

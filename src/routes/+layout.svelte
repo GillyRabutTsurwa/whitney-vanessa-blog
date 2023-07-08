@@ -1,26 +1,23 @@
 <script>
     import "@/lib/assets/sass/main.scss";
     import Navigation from "@/lib/components/Navigation.svelte";
-    // import { onMount } from "svelte";
-
-    // let textColor;
-
-    // onMount(() => {
-    //     const body = document.querySelector(".app");
-    //     const computedStyle = getComputedStyle(body);
-    //     const backgroundColor = computedStyle.backgroundColor;
-    //     textColor = getContrastColor(backgroundColor);
-
-    //     function getContrastColor(backgroundColor) {
-    //         const rgb = backgroundColor.match(/\d+/g);
-    //         const [r, g, b] = rgb.map(Number);
-    //         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-    //         return brightness > 125 ? "black" : "white";
-    //     }
-    // });
+    //NEW: interesting
+    // thanks to this new found data...
+    // i now know to fetch route data in svelte
+    // using it to render Navigation based on route
+    // if it's on the single post route, hide it
+    // will decide if i want to hide it or show it
+    // but i like that i know how to do it
+    import { page } from "$app/stores";
+    export let data;
+    console.log(data);
+    console.log($page.route);
+    console.log($page.url);
 </script>
 
-<Navigation />
+{#if $page.route.id !== "/posts/[slug]"}
+    <Navigation />
+{/if}
 <div class="app">
     <slot />
 </div>

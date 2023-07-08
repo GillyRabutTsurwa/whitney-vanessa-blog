@@ -6,7 +6,7 @@ import groq from "groq";
 export async function load({ params }) {
     const query = groq`*[_type == "post" && slug.current == "${params.slug}"] {
     ...,
-    author->
+    authour->
   }`;
     const post: object[] = await client.fetch(query); //NOTE: sanity data is weird it's an array with one object inside instead of the object outright
     return {

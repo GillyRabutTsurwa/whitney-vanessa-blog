@@ -21,11 +21,8 @@
         <h1 class="blog-content__title">{data.post.title}</h1>
         <h3 class="blog-content__author">
             <span>By: </span>
-            <!-- <a href={`/authours/${data.post.author.slug.current}`}>
-                <span>{data.post.author.name}</span>
-            </a> -->
-            <a href="/">
-                <span>{data.post.author.name}</span>
+            <a href={`/authours/${data.post.authour.slug.current}`}>
+                <span>{data.post.authour.name}</span>
             </a>
         </h3>
         <h3 class="blog-content__date-published">
