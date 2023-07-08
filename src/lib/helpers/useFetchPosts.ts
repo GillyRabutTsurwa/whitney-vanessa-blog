@@ -3,7 +3,7 @@ import groq from "groq";
 
 const config: ClientConfig = {
     dataset: "production",
-    projectId: "g014cs9v",
+    projectId: "0lso1pj1",
     useCdn: false,
     apiVersion: "2021-10-21",
 };
@@ -12,7 +12,7 @@ export const client: SanityClient = createClient(config);
 
 export const useFetchPosts = () => {
     async function fetchPosts() {
-        const query = groq`*[_type == "personal-post"]`;
+        const query = groq`*[_type == "post"]`;
         const posts = await client.fetch(query);
         return posts;
     }

@@ -4,7 +4,7 @@ import groq from "groq";
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
-    const query = groq`*[_type == "personal-post" && slug.current == "${params.slug}"] {
+    const query = groq`*[_type == "post" && slug.current == "${params.slug}"] {
     ...,
     author->
   }`;
