@@ -38,7 +38,7 @@
             };
         }
 
-        const mediaQueryList = window.matchMedia("(max-width: 767px)");
+        const mediaQueryList = window.matchMedia("(max-width: 1023px)");
         console.log(mediaQueryList.matches);
         // dynamicColour = mediaQueryList.matches ? textColour.secondaryColour : textColour.primaryColour;
         if (mediaQueryList.matches) {
