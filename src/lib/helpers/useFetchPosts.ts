@@ -1,14 +1,5 @@
-import { createClient, SanityClient, type ClientConfig } from "@sanity/client";
 import groq from "groq";
-
-const config: ClientConfig = {
-    dataset: "production",
-    projectId: "0lso1pj1",
-    useCdn: false,
-    apiVersion: "2021-10-21",
-};
-
-export const client: SanityClient = createClient(config);
+import { client } from "@/sanity.client";
 
 export const useFetchPosts = () => {
     async function fetchPosts() {

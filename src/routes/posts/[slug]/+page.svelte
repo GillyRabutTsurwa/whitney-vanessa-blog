@@ -1,5 +1,7 @@
 <script lang="ts">
     import Button from "$lib/components/Button.svelte";
+    import Para from "$lib/components/Para.svelte";
+    import Link from "$lib/components/Link.svelte";
     import { PortableText } from "@portabletext/svelte";
     import { useFormatDate } from "@/lib/helpers/useFormatDate.js";
     import { useSanityImage } from "@/lib/helpers/useSanityImage.js";
@@ -30,7 +32,7 @@
             <span>{formatDate(data.post.publishedAt)}</span>
         </h3>
         <div class="blog-content__description">
-            <PortableText value={data.post.body} />
+            <PortableText value={data.post.body} components={{ block: { normal: Para }, marks: { absUrl: Link } }} />
         </div>
         <Button isLink path="/posts/" text="All Posts" colourPrimary="#171717" colourSecondary="#dedede" />
     </div>
