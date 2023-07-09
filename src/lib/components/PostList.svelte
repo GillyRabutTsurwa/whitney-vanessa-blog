@@ -10,33 +10,46 @@
     const { urlFor } = useSanityImage();
 
     const postsPromesse = fetchPosts();
-    const textColour = {};
-    // let dynamicColour;
+    // const textColour = {};
+
     let dynamicColourOne: string;
     let dynamicColourTwo: string;
 
-    onMount(() => {
-        const body = document.querySelector(".body-tings") as HTMLDivElement;
+    // NOTE: attempting to refactor colorthief code.
+    const fetchElementColours = (element: string) => {
+        const body = document.querySelector(element) as HTMLDivElement;
         const computedStyle = getComputedStyle(body);
-        const leftBackgroundColour = computedStyle.getPropertyValue("--left-background-colour");
-        const rightBackgroundColour = computedStyle.getPropertyValue("--right-background-colour");
+        const leftBgColour = computedStyle.getPropertyValue("--left-background-colour");
+        const rightBgColour = computedStyle.getPropertyValue("--right-background-colour");
 
-        textColour.primaryColour = getContrastColor(leftBackgroundColour, rightBackgroundColour).colourOne;
-        textColour.secondaryColour = getContrastColor(leftBackgroundColour, rightBackgroundColour).colourTwo;
+        return {
+            leftBgColour: leftBgColour,
+            rightBgColour: rightBgColour,
+        };
+    };
 
-        // NOTE: i think solution is to put this in a store or composable of some sort and globally call it
-        function getContrastColor(leftBackgroundColour, rightBackgroundColour) {
-            const leftRgb = leftBackgroundColour.match(/\d+/g).map(Number);
-            const rightRgb = rightBackgroundColour.match(/\d+/g).map(Number);
-            const leftBrightness = (leftRgb[0] * 299 + leftRgb[1] * 587 + leftRgb[2] * 114) / 1000;
-            const rightBrightness = (rightRgb[0] * 299 + rightRgb[1] * 587 + rightRgb[2] * 114) / 1000;
-            return {
-                // colourOne: leftBrightness > rightBrightness ? "rgb(170, 0, 0)" : "rgb(218, 165, 32)",
-                // colourTwo: leftBrightness < rightBrightness ? "rgb(170, 0, 0)" : "rgb(218, 165, 32)",
-                colourOne: leftBrightness > rightBrightness ? "rgb(23, 23, 23)" : "rgb(222, 222, 222)",
-                colourTwo: leftBrightness < rightBrightness ? "rgb(23, 23, 23)" : "rgb(222, 222, 222)",
-            };
-        }
+    // NOTE: attempting to refactor colorthief code.
+    const getContrastColor = (leftBackgroundColour: any, rightBackgroundColour: any) => {
+        const leftRgb = leftBackgroundColour.match(/\d+/g).map(Number);
+        const rightRgb = rightBackgroundColour.match(/\d+/g).map(Number);
+        const leftBrightness = (leftRgb[0] * 299 + leftRgb[1] * 587 + leftRgb[2] * 114) / 1000;
+        const rightBrightness = (rightRgb[0] * 299 + rightRgb[1] * 587 + rightRgb[2] * 114) / 1000;
+
+        return {
+            colourOne: leftBrightness > rightBrightness ? "rgb(23, 23, 23)" : "rgb(222, 222, 222)",
+            colourTwo: leftBrightness < rightBrightness ? "rgb(23, 23, 23)" : "rgb(222, 222, 222)",
+        };
+    };
+    onMount(() => {
+        const elementColours = {
+            left: fetchElementColours(".body-tings").leftBgColour,
+            right: fetchElementColours(".body-tings").rightBgColour,
+        };
+
+        const textColour = {
+            primaryColour: getContrastColor(elementColours.left, elementColours.right).colourOne,
+            secondaryColour: getContrastColor(elementColours.left, elementColours.right).colourTwo,
+        };
 
         const mediaQueryList = window.matchMedia("(max-width: 1023px)");
         console.log(mediaQueryList.matches);
