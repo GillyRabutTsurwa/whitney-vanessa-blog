@@ -12,7 +12,7 @@
     export let data;
     console.log(data);
     console.log($page.route);
-    console.log($page.url);
+    // console.log($page.url);
 </script>
 
 {#if $page.route.id !== "/posts/[slug]"}
