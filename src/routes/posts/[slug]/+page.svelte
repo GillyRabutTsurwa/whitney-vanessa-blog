@@ -118,7 +118,7 @@
 
             &__description {
                 font-size: 1.75rem;
-                margin: 3rem 0;
+                margin: 3rem 0 6rem 0;
                 line-height: 1.5;
                 color: #333;
             }
