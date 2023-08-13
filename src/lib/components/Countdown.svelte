@@ -1,5 +1,6 @@
 <script>
     import spinner from "../assets/img/spinner.gif";
+    import logo from "../assets/img/logo.svg";
     let currentYear = new Date().getFullYear();
     let newYearTime = new Date(`August 17 ${currentYear} 00:00:00`);
 
@@ -34,6 +35,7 @@
         <img src={spinner} alt="Loading..." id="loading" class="loading" />
     {:else}
         <div id="year" class="year">{currentYear}</div>
+        <img src={logo} alt="logo" class="logo" />
         <h1>Inaugural Site Launch</h1>
         <div id="countdown" class="countdown" style="display: flex;">
             <div class="time">
@@ -114,6 +116,11 @@
         left: 50%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
+    }
+
+    .logo {
+        width: 25rem;
+        transform: translateY(-15rem);
     }
 
     .countdown {
