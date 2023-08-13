@@ -1,6 +1,7 @@
 <script>
     import "@/lib/assets/sass/main.scss";
     import Navigation from "@/lib/components/Navigation.svelte";
+    import Countdown from "@/lib/components/Countdown.svelte";
     //NEW: interesting
     // thanks to this new found data...
     // i now know to fetch route data in svelte
@@ -15,12 +16,7 @@
     // console.log($page.url);
 </script>
 
-{#if $page.route.id !== "/posts/[slug]"}
-    <Navigation />
-{/if}
-<div class="app">
-    <slot />
-</div>
+<Countdown />
 
 <style lang="scss">
     @use "../lib/assets/sass/abstracts/" as abstracts;
