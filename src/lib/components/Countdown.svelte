@@ -34,7 +34,7 @@
         <img src={spinner} alt="Loading..." id="loading" class="loading" />
     {:else}
         <div id="year" class="year">{currentYear}</div>
-        <h1>Site Launch Countdown</h1>
+        <h1>Inaugural Site Launch</h1>
         <div id="countdown" class="countdown" style="display: flex;">
             <div class="time">
                 <h2 id="days">{d4Days}</h2>
@@ -55,144 +55,6 @@
         </div>
     {/if}
 </div>
-
-<!-- <script>
-    import { onMount } from "svelte";
-    onMount(() => {
-        const second = 1000,
-            minute = second * 60,
-            hour = minute * 60,
-            day = hour * 24;
-
-        //I'm adding this section so I don't have to keep updating this pen every year :-)
-        //remove this if you don't need it
-        let today = new Date(),
-            dd = String(today.getDate()).padStart(2, "0"),
-            mm = String(today.getMonth() + 1).padStart(2, "0"),
-            yyyy = today.getFullYear(),
-            nextYear = yyyy + 1,
-            dayMonth = "09/30/",
-            birthday = dayMonth + yyyy;
-
-        today = mm + "/" + dd + "/" + yyyy;
-        if (today > birthday) {
-            birthday = dayMonth + nextYear;
-        }
-        //end
-
-        const countDown = new Date(birthday).getTime(),
-            x = setInterval(function () {
-                const now = new Date().getTime(),
-                    distance = countDown - now;
-
-                (document.getElementById("days").innerText = Math.floor(distance / day)),
-                    (document.getElementById("hours").innerText = Math.floor((distance % day) / hour)),
-                    (document.getElementById("minutes").innerText = Math.floor((distance % hour) / minute)),
-                    (document.getElementById("seconds").innerText = Math.floor((distance % minute) / second));
-
-                //do something later when date is reached
-                if (distance < 0) {
-                    document.getElementById("headline").innerText = "It's my birthday!";
-                    document.getElementById("countdown").style.display = "none";
-                    document.getElementById("content").style.display = "block";
-                    clearInterval(x);
-                }
-                //seconds
-            }, 0);
-    });
-</script>
-
-<div class="container">
-    <h1 id="headline">Countdown to my birthday</h1>
-    <div id="countdown">
-        <ul>
-            <li><span id="days" />days</li>
-            <li><span id="hours" />Hours</li>
-            <li><span id="minutes" />Minutes</li>
-            <li><span id="seconds" />Seconds</li>
-        </ul>
-    </div>
-    <div id="content" class="emoji">
-        <span>🥳</span>
-        <span>🎉</span>
-        <span>🎂</span>
-    </div>
-</div>
-
-<style>
-    :root {
-        --smaller: 0.75;
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-    }
-
-    body {
-        align-items: center;
-        background-color: #ffd54f;
-        display: flex;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    }
-
-    .container {
-        color: #333;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    h1 {
-        font-weight: normal;
-        letter-spacing: 0.125rem;
-        text-transform: uppercase;
-    }
-
-    li {
-        display: inline-block;
-        font-size: 1.5em;
-        list-style-type: none;
-        padding: 1em;
-        text-transform: uppercase;
-    }
-
-    li span {
-        display: block;
-        font-size: 4.5rem;
-    }
-
-    .emoji {
-        display: none;
-        padding: 1rem;
-    }
-
-    .emoji span {
-        font-size: 4rem;
-        padding: 0 0.5rem;
-    }
-
-    @media all and (max-width: 768px) {
-        h1 {
-            font-size: calc(1.5rem * var(--smaller));
-        }
-
-        li {
-            font-size: calc(1.125rem * var(--smaller));
-        }
-
-        li span {
-            font-size: calc(3.375rem * var(--smaller));
-        }
-    }
-</!-->
--->
 
 <style lang="scss">
     .container {
@@ -221,6 +83,7 @@
         align-items: center;
         text-align: center;
         overflow: hidden;
+        font-size: 2.4rem;
 
         &::after {
             content: "";
